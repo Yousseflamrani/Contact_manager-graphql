@@ -9,6 +9,7 @@ import { ContactModule } from './contact/contact.module';
 import { UserModule } from './user/user.module';
 import { PrismaModule } from '../prisma/prisma.module';
 import { JwtService } from '@nestjs/jwt';
+import { CommentModule } from './comment/comment.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { JwtService } from '@nestjs/jwt';
     UserModule,
     AuthModule,
     PrismaModule,
+    CommentModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],

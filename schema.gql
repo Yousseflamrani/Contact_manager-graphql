@@ -18,14 +18,27 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type Comment {
+  id: Int!
+  content: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  contactId: Int!
+  userId: Int!
+}
+
 type Query {
   findAll: [Contact!]!
+  findAllComments: [Comment!]!
 }
 
 type Mutation {
   createContact(createContactDto: CreateContactDto!): Contact!
   updateContact(updateContactDto: UpdateContactDto!): Contact!
   removeContact(id: Float!): Contact!
+  createComment(createCommentDto: CreateCommentDto!): Comment!
+  updateComment(updateCommentDto: UpdateCommentDto!): Comment!
+  removeComment(id: Float!): Comment!
 }
 
 input CreateContactDto {
@@ -41,4 +54,15 @@ input UpdateContactDto {
   email: String
   phone: String
   address: String
+}
+
+input CreateCommentDto {
+  content: String!
+  contactId: Float!
+}
+
+input UpdateCommentDto {
+  content: String
+  contactId: Float
+  id: Int!
 }
